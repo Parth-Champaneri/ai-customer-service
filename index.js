@@ -7,17 +7,15 @@ const app = express();
 const OpenAIApi = require('openai');
 
   const openai = new OpenAIApi({
-    apiKey: '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'
+    apiKey: 'Key'
   });
 
 // Middleware to parse POST requests
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-const TWILIO_ACCOUNT_SID = 'ACf5af7db4eab32c62a2b255f233d15d5b';
-const TWILIO_AUTH_TOKEN = '4979c7c7710012a2c63d31499e1ed3bf';
 
-const twilioClient = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 const questions = [
     { id: 'name', text: "What's your name?" },
